@@ -15,11 +15,11 @@ const showMessageIsOn = () => isOn() ? l("DEV CONSOLE is ON") : "";
 
 const l = console.log.bind(console);
 
-const jsonString = v => JSON.stringify(v, null, 2);
+const stringify = v => JSON.stringify(v, null, 2);
 const j = (d, name = false) =>
     name === false
-        ? l(jsonString(d))
-        : l(name, jsonString(d))
+        ? l(stringify(d))
+        : l(name, stringify(d))
 ;
 
 const or = (DEV, LIVE) => isOn() ? DEV : LIVE;
@@ -34,5 +34,6 @@ module.exports = {
     or,
     DEV,
     LIVE,
+    stringify,
     showMessageIsOn,
 };
