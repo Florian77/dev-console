@@ -34,6 +34,7 @@ const r2 = r("STAGE2:");
 const r3 = r("STAGE3:");
 const r4 = r("STAGE4:");
 const r5 = r("STAGE5:");
+// TODO add more
 
 const or = (DEV, LIVE) => isOn() ? DEV : LIVE;
 
