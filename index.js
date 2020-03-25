@@ -9,14 +9,20 @@
 // dc.LIVE();
 // dc.or(DEV, LIVE);
 
-const isOn = () => ("DEV_CONSOLE_ON" in process.env);
-const showMessageIsOn = () => isOn() ? l("DEV CONSOLE is ON") : "";
+let DC_ON = Boolean(Number(process.env.DEV_CONSOLE_ON) === 1);
+// console.log("DEV_CONSOLE_ON", process.env.DEV_CONSOLE_ON, DC_ON);
+
+const activate = () => DC_ON = true; // process.env.DEV_CONSOLE_ON = 1;
+const deactivate = () => DC_ON = false; //process.env.DEV_CONSOLE_ON = false;
+
+const isOn = () => DC_ON; //process.env.DEV_CONSOLE_ON; // Boolean(process.env.DEV_CONSOLE_ON );
 
 const l = (...args) => {
     if (isOn()) {
         console.log(...args)
     }
 };
+const showMessageIsOn = () => l("DEV CONSOLE is ON");
 
 const stringify = v => JSON.stringify(v, null, 2);
 const j = (d, name = false) =>
@@ -43,6 +49,10 @@ const DEV = () => isOn();
 const LIVE = () => !isOn();
 
 module.exports = {
+    activate,
+    on: activate,
+    deactivate,
+    off: deactivate,
     isOn,
     l,
     j,
