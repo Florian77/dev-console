@@ -9,7 +9,9 @@
 // dc.LIVE();
 // dc.or(DEV, LIVE);
 
-let DC_ON = Boolean(Number(process.env.DEV_CONSOLE_ON) === 1);
+const evaluateEnv = () => Boolean(process.env && process.env.DEV_CONSOLE_ON && Number(process.env.DEV_CONSOLE_ON) === 1);
+let DC_ON = evaluateEnv();
+
 // console.log("DEV_CONSOLE_ON", process.env.DEV_CONSOLE_ON, DC_ON);
 
 const activate = () => DC_ON = true; // process.env.DEV_CONSOLE_ON = 1;
@@ -67,4 +69,5 @@ module.exports = {
     LIVE,
     stringify,
     showMessageIsOn,
+    evaluateEnv,
 };
