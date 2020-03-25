@@ -1,13 +1,3 @@
-// const dc = (...args) => ("DEV_CONSOLE_ON" in process.env) ? R.isEmpty(args) ? true :  console.log(...args) : false;
-// const dcOr = (DEV, LIVE) => dc() ? DEV : LIVE;
-// dc() && console.log("DEV CONSOLE is ON");
-
-// dc.l();
-// dc.j();
-// dc.isOn();
-// dc.DEV();
-// dc.LIVE();
-// dc.or(DEV, LIVE);
 
 const evaluateEnv = () => Boolean(process.env && process.env.DEV_CONSOLE_ON && Number(process.env.DEV_CONSOLE_ON) === 1);
 let DC_ON = evaluateEnv();
