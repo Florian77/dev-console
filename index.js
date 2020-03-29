@@ -2,12 +2,26 @@
 const evaluateEnv = () => Boolean(process.env && process.env.DEV_CONSOLE_ON && Number(process.env.DEV_CONSOLE_ON) === 1);
 let DC_ON = evaluateEnv();
 
+const evaluateForceOffEnv = () => Boolean(process.env && process.env.DEV_CONSOLE_FORCE_OFF && Number(process.env.DEV_CONSOLE_FORCE_OFF) === 1);
+let FORCE_OFF = evaluateForceOffEnv();
+
+// if(FORCE_OFF) {
+//     console.log("DEV CONSOLE is FORCE_OFF");
+// }
+// console.log("[FORCE_OFF=%s] [process.env.DEV_CONSOLE_FORCE_OFF=%s]", FORCE_OFF, process.env.DEV_CONSOLE_FORCE_OFF);
+// throw Error("ENDE");
+
+const reEvaluateEnv = () => {
+    DC_ON = evaluateEnv();
+    FORCE_OFF = evaluateForceOffEnv();
+};
+
 // console.log("DEV_CONSOLE_ON", process.env.DEV_CONSOLE_ON, DC_ON);
 
 const activate = () => DC_ON = true; // process.env.DEV_CONSOLE_ON = 1;
 const deactivate = () => DC_ON = false; //process.env.DEV_CONSOLE_ON = false;
 
-const isOn = () => DC_ON; //process.env.DEV_CONSOLE_ON; // Boolean(process.env.DEV_CONSOLE_ON );
+const isOn = () => DC_ON && !FORCE_OFF; //process.env.DEV_CONSOLE_ON; // Boolean(process.env.DEV_CONSOLE_ON );
 
 const l = (...args) => {
     if (isOn()) {
@@ -60,5 +74,5 @@ module.exports = {
     LIVE,
     stringify,
     showMessageIsOn,
-    evaluateEnv,
+    reEvaluateEnv,
 };

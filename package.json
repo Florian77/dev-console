@@ -1,6 +1,29 @@
 {
   "name": "node-dev-console",
-  "version": "1.0.0",
-  "dependencies": {
+  "version": "0.0.3",
+  "description": "dev helper",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx mocha --ui bdd ./test --recursive",
+    "prepublishOnly-DEACTIVATED": "npm test",
+    "publish-package": "npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Florian77/node-dev-console.git"
+  },
+  "keywords": [
+    "ramda"
+  ],
+  "author": "Florian Tölle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Florian77/node-dev-console/issues"
+  },
+  "homepage": "https://github.com/Florian77/node-dev-console#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1"
   }
 }
