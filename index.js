@@ -52,8 +52,8 @@ const r5 = r("STAGE5:");
 
 const or = (DEV, LIVE) => isOn() ? DEV : LIVE;
 
-const DEV = () => isOn();
-const LIVE = () => !isOn();
+const isDEV = () => isOn();
+const isLIVE = () => !isOn();
 
 module.exports = {
     activate,
@@ -70,8 +70,8 @@ module.exports = {
     r4,
     r5,
     or,
-    DEV,
-    LIVE,
+    isDEV,
+    isLIVE,
     stringify,
     showMessageIsOn,
     reEvaluateEnv,
