@@ -33,8 +33,13 @@ const showMessageIsOn = () => l("DEV CONSOLE is ON");
 const stringify = v => JSON.stringify(v, null, 2);
 const j = (d, name = false) =>
     name === false
-        ? l(stringify(d))
-        : l(name, stringify(d))
+        ? l(typeof d, stringify(d))
+        : l(name, stringify(d), typeof d)
+;
+const t = (d, name = false) =>
+    name === false
+        ? l("[%s]", d, typeof d)
+        : l("%s [%s]", name, d, typeof d)
 ;
 
 
@@ -63,6 +68,7 @@ module.exports = {
     isOn,
     l,
     j,
+    t,
     r,
     r1,
     r2,
