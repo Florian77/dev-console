@@ -4,8 +4,9 @@
   "description": "dev helper",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha --ui bdd ./test --recursive",
-    "prepublishOnly-DEACTIVATED": "npm test",
+    "test": "set CONSOLE_LOG_OFF=1&& npx mocha --ui bdd ./**/*.test.js",
+    "test-loud": "npx mocha --ui bdd ./**/*.test.js",
+    "prepublishOnly": "npm test",
     "publish-package": "npm publish"
   },
   "repository": {
