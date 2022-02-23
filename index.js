@@ -31,20 +31,20 @@ const l = (...args) => {
 const showMessageIsOn = () => l("DEV CONSOLE is ON");
 
 const stringify = v => JSON.stringify(v, null, 2);
-const j = (d, name = false) =>
+const j = (d, name = false, LP = '') =>
     name === false
         ? l(typeof d, stringify(d))
-        : l(name, stringify(d), typeof d)
+        : l(LP + String(name), stringify(d), typeof d)
 ;
-const t = (d, name = false) =>
+const t = (d, name = false, LP = '') =>
     name === false
         ? l("[%s]", d, typeof d)
-        : l("%s [%s]", name, d, typeof d)
+        : l("%s [%s]", LP + String(name), d, typeof d)
 ;
 
 
-const r = (name = "") => d => {
-    l(String(name), stringify(d));
+const r = (name = "", LP = '') => d => {
+    l(LP + String(name), stringify(d));
     return d;
 };
 
