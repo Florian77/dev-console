@@ -1,28 +1,38 @@
 {
   "name": "node-dev-console",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "dev helper",
-  "main": "index.js",
-  "scripts": {
-    "test": "set CONSOLE_LOG_OFF=1&& npx mocha --ui bdd ./**/*.test.js",
-    "test-loud": "npx mocha --ui bdd ./**/*.test.js",
-    "prepublishOnly": "npm test",
-    "publish-package": "npm publish"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Florian77/node-dev-console.git"
   },
-  "keywords": [],
   "author": "Florian Tölle",
+  "type": "commonjs",
+  "exports": "./index.js",
+  "scripts": {
+    "test": "set CONSOLE_LOG_OFF=1&& npx mocha --ui bdd ./**/*.test.js",
+    "test-loud": "npx mocha --ui bdd ./**/*.test.js",
+    "prepublishOnly": "npm test",
+    "publish-package": "npm publish",
+    "generate-.d.ts-file": "tsc --declaration index.js --allowJs --emitDeclarationOnly",
+    "generate-readme-api-documentation": "npm run generate-.d.ts-file && ts-readme-generator"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "ts-readme-generator": "^0.7.2",
+    "typescript": "^4.8.2"
+  },
+  "main": "index.js",
+  "types": "types.d.ts",
+  "keywords": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Florian77/node-dev-console/issues"
   },
-  "homepage": "https://github.com/Florian77/node-dev-console#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^7.1.1"
-  }
+  "homepage": "https://github.com/Florian77/node-dev-console#readme"
 }
